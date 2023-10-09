@@ -64,7 +64,7 @@ Context path прописуємо  employee-app.
 Server port повинен містити порт Apache Tomcat, який в
 налаштуваннях сервера.
 Див. на сервері /conf/server.xml
-<Connector port="8888"...
+<Connector port="8088"...
 
 Клікаємо Apply та OK.
 
