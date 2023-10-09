@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          id="WebApp_ID" version="3.1">
-    <display-name>Books Web App</display-name>
+    <display-name>Employees Web App</display-name>
     <servlet>
-        <servlet-name>BookController</servlet-name>
-        <servlet-class>org.example.app.controller.BookController</servlet-class>
+        <servlet-name>EmployeeController</servlet-name>
+        <servlet-class>org.example.app.controller.EmployeeController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>BookController</servlet-name>
+        <servlet-name>EmployeeController</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <error-page>

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
-    <title>Books Store</title>
+    <title>Employees List</title>
 <style>
         .greenButton {
             background-color:#44c767;
@@ -29,53 +29,53 @@
 </head>
 <body>
     <center>
-        <h1>Book Store</h1>
+        <h1>Employees List</h1>
         <h3>
-            <a href="<%=request.getContextPath()%>/list"  class="greenButton">List Books</a>
+            <a href="<%=request.getContextPath()%>/list"  class="greenButton">List Employees</a>
         </h3>
     </center>
     <div align="center">
-        <c:if test="${book != null}">
+        <c:if test="${employee != null}">
             <form action="update" method="post">
         </c:if>
-        <c:if test="${book == null}">
+        <c:if test="${employee == null}">
             <form action="insert" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>
                 <h3>
-                    <c:if test="${book != null}">
-                        Edit Book
+                    <c:if test="${employee != null}">
+                        Edit Employee
                     </c:if>
-                    <c:if test="${book == null}">
-                        Add New Book
+                    <c:if test="${employee == null}">
+                        Add New Employee
                     </c:if>
                 </h3>
             </caption>
-                <c:if test="${book != null}">
-                    <input type="hidden" name="id" value="<c:out value='${book.id}' />" />
+                <c:if test="${employee != null}">
+                    <input type="hidden" name="id" value="<c:out value='${employee.id}' />" />
                 </c:if>
             <tr>
-                <th>Title: </th>
+                <th>Name: </th>
                 <td>
-                    <input type="text" name="title" size="45"
-                            value="<c:out value='${book.title}' />"
+                    <input type="text" name="name" size="45"
+                            value="<c:out value='${employee.name}' />"
                         />
                 </td>
             </tr>
             <tr>
-                <th>Author: </th>
+                <th>Position: </th>
                 <td>
-                    <input type="text" name="author" size="45"
-                            value="<c:out value='${book.author}' />"
+                    <input type="text" name="position" size="45"
+                            value="<c:out value='${employee.position}' />"
                     />
                 </td>
             </tr>
             <tr>
-                <th>Price: </th>
+                <th>Phone: </th>
                 <td>
-                    <input type="text" name="price" size="5"
-                            value="<c:out value='${book.price}' />"
+                    <input type="text" name="phone" size="12"
+                            value="<c:out value='${employee.phone}' />"
                     />
                 </td>
             </tr>

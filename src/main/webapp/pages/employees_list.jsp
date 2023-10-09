@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
-    <title>Books Store</title>
+    <title>Employees List</title>
     <style>
         .greenButton {
             background-color:#44c767;
@@ -50,34 +50,34 @@
 </head>
 <body>
     <center>
-        <h1>Book Store</h1>
+        <h1>Employees List</h1>
         <h3>
-        <!-- <a href="<%=request.getContextPath()%>/new">Add New Book</a> -->
-            <a href="<%=request.getContextPath()%>/new" class="greenButton">Add Book</a>
+        <!-- <a href="<%=request.getContextPath()%>/new">Add New Employee</a> -->
+            <a href="<%=request.getContextPath()%>/new" class="greenButton">Add Employee</a>
             &nbsp;&nbsp;&nbsp;
-            <a href="<%=request.getContextPath()%>/list">List Books</a>
+            <a href="<%=request.getContextPath()%>/list">List Employees</a>
         </h3>
     </center>
     <div align="center">
         <table border="1" cellpadding="5">
-            <caption><h2>Books</h2></caption>
+            <caption><h2>Employees</h2></caption>
             <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Price</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Phone</th>
                 <th>Actions</th>
             </tr>
-            <c:forEach var="book" items="${listBook}">
+            <c:forEach var="employee" items="${listEmployee}">
                 <tr>
-                    <td><c:out value="${book.id}" /></td>
-                    <td><c:out value="${book.title}" /></td>
-                    <td><c:out value="${book.author}" /></td>
-                    <td><c:out value="${book.price}" /></td>
+                    <td><c:out value="${employee.id}" /></td>
+                    <td><c:out value="${employee.name}" /></td>
+                    <td><c:out value="${employee.position}" /></td>
+                    <td><c:out value="${employee.phone}" /></td>
                     <td>
-                        <a href="<%=request.getContextPath()%>/edit?id=<c:out value='${book.id}' />">Edit</a>
+                        <a href="<%=request.getContextPath()%>/edit?id=<c:out value='${employee.id}' />">Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="<%=request.getContextPath()%>/delete?id=<c:out value='${book.id}' />" class="redButton">Delete</a>
+                        <a href="<%=request.getContextPath()%>/delete?id=<c:out value='${employee.id}' />" class="redButton">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
