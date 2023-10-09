@@ -41,7 +41,7 @@ Run > Edit Configurations... > + > Smart Tomcat
 
 Вкладка Configuration.
 
-В Name пишемо, наприклад, books-app.
+В Name пишемо, наприклад, employee-app.
 
 Клікаємо Configure. Стаємо на Tomcat Server. Клікаємо + .
 Вибираємо папку необхідного Apache Tomcat.
@@ -59,12 +59,12 @@ Deployment directory. Вибираємо папку webapp свого проек
 Use classpath of module має містити найменування
 кореневої папки проекту.
 
-Context path прописуємо  books-app.
+Context path прописуємо  employee-app.
 
 Server port повинен містити порт Apache Tomcat, який в
 налаштуваннях сервера.
 Див. на сервері /conf/server.xml
-<Connector port="8080"...
+<Connector port="8888"...
 
 Клікаємо Apply та OK.
 
@@ -84,7 +84,7 @@ Server port повинен містити порт Apache Tomcat, який в
 11) Перевіряємо працездатність програми.
 Запускаємо сервер.
 В консолі повинно з'явитися таке посилання
-http://localhost:8080/books-app
+http://localhost:8888/employee-app
 Клікаємо на посилання.
 В браузері з'явиться стартова сторінка Web-додатку.
 Тестуємо функціонал додатку.
