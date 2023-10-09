@@ -1,25 +1,25 @@
 
--- БАЗА ДАНИХ
--- Можливість створення БД з метою уникнення некваліфікованих
--- дій, краще залишити за розробником.
--- Тому такий функціонал у додатку не прописуємо.
--- Можемо створити БД через візуальний інструмент, наприклад,
--- MySQL Workbench.
 CREATE DATABASE demo_db;
 
--- ТАБЛИЦІ
--- Можливість створення таблиць БД, з метою уникнення некваліфікованих
--- дій, краще залишити за розробником.
--- Тому такий функціонал у додатку не прописуємо.
--- Попередньо, необхідно спроектувати таблиці та їх зв'язки,
--- на основі сутностей реального світу.
--- Можемо створити таблиці БД через візуальний інструмент, наприклад,
--- MySQL Workbench.
-
-CREATE TABLE IF NOT EXISTS books
+CREATE TABLE IF NOT EXISTS employees
 ( id INTEGER NOT NULL AUTO_INCREMENT,
-  title VARCHAR(128) NOT NULL,
-  author VARCHAR(128) NOT NULL,
-  price DOUBLE NOT NULL,
+  name VARCHAR(128) NOT NULL,
+  position VARCHAR(128) NOT NULL,
+  phone VARCHAR(128) NOT NULL,
   PRIMARY KEY (id)
 );
+
+INSERT INTO employees (name, position, phone) VALUES (?, ?, ?)
+
+
+SELECT * FROM employees
+
+
+SELECT * FROM employees WHERE id == ?
+
+
+UPDATE employees SET name = ?, position = ?, phone = ? WHERE id = ?
+
+
+DELETE FROM employees WHERE id = ?
+
