@@ -1,8 +1,7 @@
 package org.example.app.repository;
 
 import org.example.app.database.DBConn;
-import org.example.app.entity.Book;
-import org.example.app.utils.Rounder;
+import org.example.app.entity.Employee;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,38 +10,38 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BookRepository {
+public class EmployeeRepository {
 
     private static final Logger LOGGER =
-            Logger.getLogger(BookRepository.class.getName());
+            Logger.getLogger(EmployeeRepository.class.getName());
 
-    public void createBook(Book book) {
-        String sql = "INSERT INTO books (title, author, price) VALUES (?, ?, ?)";
+    public void createEmployee(Employee employee) {
+        String sql = "INSERT INTO employees (name, position, phone) VALUES (?, ?, ?)";
         // try-with-resources statement for automatic disconnect from DB
         try (Connection conn = DBConn.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, book.getTitle());
-            pstmt.setString(2, book.getAuthor());
-            pstmt.setDouble(3, Rounder.round(book.getPrice(), 2));
+            pstmt.setString(1, employee.getName());
+            pstmt.setString(2, employee.getPosition());
+            pstmt.setString(3, employee.getPhone());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, e.getMessage(), e);
         }
     }
 
-    public List<Book> readBooks() {
-        List<Book> list = new ArrayList<>();
-        String sql = "SELECT * FROM books";
+    public List<Employee> readEmployees() {
+        List<Employee> list = new ArrayList<>();
+        String sql = "SELECT * FROM employees";
         // try-with-resources statement for automatic disconnect from DB
         try (Connection conn = DBConn.connect();
              Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                list.add(new Book(
+                list.add(new Employee(
                                 rs.getInt("id"),
-                                rs.getString("title"),
-                                rs.getString("author"),
-                                Rounder.round(rs.getDouble("price"), 2)
+                                rs.getString("name"),
+                                rs.getString("position"),
+                                rs.getString("phone")
                         )
                 );
             }
@@ -55,48 +54,48 @@ public class BookRepository {
         }
     }
 
-    public Book getBookById(int id) {
-        Book book = null;
-        String sql = "SELECT * FROM books WHERE id = ?";
+    public Employee getEmployeeById(int id) {
+        Employee employee = null;
+        String sql = "SELECT * FROM employees WHERE id = ?";
         // try-with-resources statement for automatic disconnect from DB
         try (Connection conn = DBConn.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                book = new Book(id, rs.getString("title"),
-                        rs.getString("author"),
-                        Rounder.round(rs.getDouble("price"), 2)
+                employee = new Employee(id, rs.getString("name"),
+                        rs.getString("position"),
+                        rs.getString("phone")
                 );
             }
             pstmt.executeUpdate();
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, e.getMessage(), e);
         }
-        return book;
+        return employee;
     }
 
-    public void updateBook(Book book) {
-        String sql = "UPDATE books SET title = ?, author = ?, price = ? WHERE id = ?";
+    public void updateEmployee(Employee employee) {
+        String sql = "UPDATE employees SET name = ?, position = ?, phone = ? WHERE id = ?";
         // try-with-resources statement for automatic disconnect from DB
         try (Connection conn = DBConn.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, book.getTitle());
-            pstmt.setString(2, book.getAuthor());
-            pstmt.setDouble(3, Rounder.round(book.getPrice(), 2));
-            pstmt.setInt(4, book.getId());
+            pstmt.setString(1, employee.getName());
+            pstmt.setString(2, employee.getPosition());
+            pstmt.setString(3, employee.getPhone());
+            pstmt.setInt(4, employee.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, e.getMessage(), e);
         }
     }
 
-    public void deleteBook(Book book) {
-        String sql = "DELETE FROM books where id = ?";
+    public void deleteEmployee(Employee employee) {
+        String sql = "DELETE FROM employees where id = ?";
         // try-with-resources statement for automatic disconnect from DB
         try (Connection conn = DBConn.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, book.getId());
+            pstmt.setInt(1, employee.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, e.getMessage(), e);
